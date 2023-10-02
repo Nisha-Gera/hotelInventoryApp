@@ -1,1 +1,62 @@
 <p>rooms works!</p>
+<!-- binding in angular -->
+<!-- the name is binded through interpolation binding. -->
+<h1>welcome to {{hotelName}}</h1>
+
+<!-- this is an example of property binding where we can bind data using any html property which is valid! -->
+<div [hidden]="hideRooms">
+  <p>No. of rooms</p>
+  <div [innerHTML]="numberOfRoomsAvailable"></div>
+</div>
+
+<!--Null collision operator and optional chaining -->
+{{room?.availableRooms ?? 'No Rooms'}}
+
+<!-- *ngIf Directive -->
+<div *ngIf="room.availableRooms > 0">
+  Rooms List:
+  <table>
+    <tr>
+      <th>Index</th>
+      <th>Even/Odd</th>
+      <th>Room number</th>
+      <th>Room Type</th>
+      <th>Room Price</th>
+      <th>Room Amenities</th>
+      <th>CheckIn Time</th>
+    </tr>
+    <tr  [ngClass]="e ? 'even':'odd' "  *ngFor="let room of roomList; let e=even ; let o =odd; let i = index">
+      <td> {{i}} </td>
+      <td>{{e ? "even" : "odd"}}</td>
+      <td>{{room.roomNumber}}</td>
+      <td>{{room.roomType }}</td>
+      <td>{{room.price}}</td>
+      <td>{{room.amenities}}</td>
+      <td>{{room.checkInTime}}</td>
+    </tr>
+  </table>
+  <!-- {{roomList}} -->
+</div>
+
+<!-- event binding:  -->
+<button (click)="toggle()">Toggle</button>
+
+<!-- Directives:
+Directives are used to change the behaviour and appearance of your DOM element. 
+Directives can implement all lifecycle hooks
+Directives can not have template  -->
+
+<!-- types of Directives
+1. Structural : costlier --they change the behaviour of DOM which may cause performance issues.
+2. Attribute : -->
+
+<!-- built in directives
+*ngIf  - this * represent the structural Directive...these are used to add?Remove lemenets in the DOM
+
+*ngFor  - this * represent the structural Directive...these are used to add?Remove lemenets in the DOM
+
+*ngSwitch - this * represent the structural Directive...these are used to add?Remove lemenets in the DOM
+
+ngClass - this is attribute directive , these help in modifying the elements in the DOM
+
+ngStyle - this is attribute directive , these help in modifying the elements in the DOM -->
